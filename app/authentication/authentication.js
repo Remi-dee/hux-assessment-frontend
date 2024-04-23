@@ -1,11 +1,10 @@
-
-
 import { useRouter, useSearchParams } from "next/navigation";
 import SignUp from "./signUp/SignUpForm_comp";
 
 import { Modal } from "../composables/modal/modal";
 import SignIn from "./signIn/SignInForm_comp";
-import CreateContact from "../contact/createContact_comp";
+import CreateContact from "../contact/components/createContact_comp";
+import UpdateContact from "../contact/components/updateContact_comp";
 
 function Authentication() {
   const view = useSearchParams().get("view");
@@ -46,6 +45,18 @@ function Authentication() {
               }}
             >
               <CreateContact
+                onClose={() => {
+                  router.push("/");
+                }}
+              />
+            </Modal>
+          ) : view == "updatecontact" ? (
+            <Modal
+              onClose={() => {
+                router.push("/");
+              }}
+            >
+              <UpdateContact
                 onClose={() => {
                   router.push("/");
                 }}

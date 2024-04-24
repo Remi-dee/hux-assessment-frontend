@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const API_URL = "https://hux-contact-management.onrender.com/users";
+const API_URL = "https://hux-contact-management.onrender.com/contact";
 
-// Register user
+// Create contact
 const createUser = async (userData) => {
   try {
     const response = await axios.post(API_URL, userData);

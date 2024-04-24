@@ -38,18 +38,6 @@ function Authentication() {
                 }}
               />
             </Modal>
-          ) : view == "createcontact" ? (
-            <Modal
-              onClose={() => {
-                router.push("/");
-              }}
-            >
-              <CreateContact
-                onClose={() => {
-                  router.push("/");
-                }}
-              />
-            </Modal>
           ) : view == "updatecontact" ? (
             <Modal
               onClose={() => {

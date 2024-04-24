@@ -10,7 +10,15 @@ import UpdateContact from "./components/updateContact_comp";
 export default function ContactPage() {
   const view = useSearchParams().get("view");
   const router = useRouter();
+  const [user, setUser] = useState();
 
+  useEffect(() => {
+    const userSession = JSON.parse(localStorage.getItem("user"));
+    if (user) setUser(userSession);
+    console.log("here is", userSession);
+    console.log("here is", user);
+  }, [user]);
+  console.log("here is 3  ", user);
   return (
     <>
       <Contacts />
@@ -24,6 +32,7 @@ export default function ContactPage() {
             onClose={() => {
               router.push("/contact");
             }}
+            user={user}
           />
         </Modal>
       ) : view == "updatecontact" ? (
@@ -36,6 +45,7 @@ export default function ContactPage() {
             onClose={() => {
               router.push("/contact");
             }}
+            user={user}
           />
         </Modal>
       ) : (

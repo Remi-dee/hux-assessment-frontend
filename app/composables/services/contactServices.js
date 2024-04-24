@@ -1,31 +1,32 @@
 import axios from "axios";
 
-const API_URL = "https://hux-contact-management.onrender.com/contact";
+const API_URL = "https://hux-contact-management.onrender.com/contacts";
 
 // Create contact
-const createUser = async (userData) => {
-  try {
-    const response = await axios.post(API_URL, userData);
+const createUser = async (userData, token) => {
+  
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
 
-    if (typeof window !== "undefined" && response.data) {
-      localStorage.setItem("user", JSON.stringify(response.data));
+  try {
+    const response = await axios.post(API_URL, userData, config);
+
+    if (response.data) {
+      console.log(response.data);
+      alert("Contact successfully created");
     } else {
       false;
     }
-    if (response.data) {
-      alert("You've successfully signed in");
-      return response.data;
-    } else {
-      return false;
-    }
   } catch (error) {
-    alert("Unable to create user: " + error.message);
+    alert("Unable to create contact: " + error.message);
   }
 };
 
 // Login user
 const loginUser = async (userData) => {
-  
   const response = await axios.post(API_URL + "/login", userData);
   try {
     if (typeof window !== "undefined" && response.data) {

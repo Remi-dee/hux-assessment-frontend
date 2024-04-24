@@ -1,6 +1,34 @@
-// pages/signup.js
-
+import { useRouter } from "next/navigation";
+import { createUser } from "../../composables/services/authServices";
+import { validateUserForm } from "../../composables/validation";
+import { useState } from "react";
 export default function SignUp() {
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+  // State for form fields
+  const [formData, setFormData] = useState({
+    userName: "",
+    email: "",
+    password: "",
+  });
+
+  // Form change handler
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setFormData({ ...formData, [id]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // Perform form validation before submitting
+    if (validateUserForm(formData)) {
+      setIsLoading(true);
+      const userCreated = await createUser(formData);
+      if (userCreated) setIsLoading(false);
+      router.push("/contact");
+    }
+  };
+
   return (
     <div className=" flex flex-col items-center justify-center  py-6 bg-gray-100">
       <div className="max-w-md w-full py-5 px-8">
@@ -13,39 +41,26 @@ export default function SignUp() {
             </a>
           </p>
         </div>
-        <form className="mt-8 space-y-6">
+        <form onSubmit={handleSubmit} className="mt-8 space-y-6">
           <div>
             <label
-              htmlFor="firstName"
+              htmlFor="userName"
               className="block text-sm font-medium text-gray-700"
             >
-              First Name
+              User Name
             </label>
             <input
-              id="firstName"
-              name="firstName"
+              id="userName"
+              name="userName"
               type="text"
+              value={formData.userName}
+              onChange={handleChange}
               autoComplete="given-name"
               required
-              className="mt-1 block p-2 w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+              className="mt-1 text-gray-700 block p-2 w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
             />
           </div>
-          <div>
-            <label
-              htmlFor="lastName"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Last Name
-            </label>
-            <input
-              id="lastName"
-              name="lastName"
-              type="text"
-              autoComplete="family-name"
-              required
-              className="mt-1 block w-full p-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-            />
-          </div>
+
           <div>
             <label
               htmlFor="email"
@@ -57,9 +72,11 @@ export default function SignUp() {
               id="email"
               name="email"
               type="email"
+              value={formData.email}
+              onChange={handleChange}
               autoComplete="email"
               required
-              className="mt-1 block p-2 w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+              className="mt-1 text-gray-700 block p-2 w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
             />
           </div>
           <div>
@@ -73,9 +90,11 @@ export default function SignUp() {
               id="password"
               name="password"
               type="password"
+              value={formData.password}
+              onChange={handleChange}
               autoComplete="new-password"
               required
-              className="mt-1 block w-full p-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+              className="mt-1 text-gray-700 block w-full p-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
             />
           </div>
           <div>
@@ -83,7 +102,7 @@ export default function SignUp() {
               type="submit"
               className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
-              Sign Up
+              {isLoading ? "Loading..." : "Sign Up"}
             </button>
           </div>
         </form>

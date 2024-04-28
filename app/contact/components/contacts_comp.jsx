@@ -57,7 +57,7 @@ export default function Contacts({ setContactId, user }) {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center min-h-screen py-6 bg-gray-100">
+      <div className="min-h-screen flex items-center justify-center bg-gray-100">
         <>
           <div className="max-w-4xl w-full px-4">
             <div className="text-center mt-5 md:text-left md:flex justify-between">

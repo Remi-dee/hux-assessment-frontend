@@ -20,7 +20,7 @@ export default function SignIn() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // Perform form validation before submitting
-    
+
     setIsLoading(true);
     const userLoggedIn = await loginUser(formData);
     if (userLoggedIn) {
@@ -38,7 +38,7 @@ export default function SignIn() {
         <div className="text-center">
           <h2 className="text-3xl font-bold text-gray-800">Log In</h2>
           <p className="mt-2 text-sm text-gray-600">
-            Don't have an account?{" "}
+            Don&apos;t have an account?{" "}
             <a href="/signup" className="text-indigo-600 hover:underline">
               Sign up
             </a>

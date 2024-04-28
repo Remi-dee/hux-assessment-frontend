@@ -57,10 +57,10 @@ export default function Contacts({ setContactId, user }) {
 
   return (
     <>
-      <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <div className="min-h-screen px-[8%] lg:px-[15%] bg-gray-100">
         <>
           <div className="max-w-4xl w-full px-4">
-            <div className="text-center mt-5 md:text-left md:flex justify-between">
+            <div className="text-center pt-5 md:text-left md:flex justify-between">
               <h2 className="text-3xl font-bold text-gray-800 mb-4">
                 Contacts List
               </h2>
@@ -80,7 +80,7 @@ export default function Contacts({ setContactId, user }) {
               </div>
             )}
 
-            <div className="bg-white shadow overflow-hidden sm:rounded-lg">
+            <div className="bg-white shadow overflow-hidden sm:rounded-lg ">
               {!loading && (
                 <ul className="divide-y divide-gray-200">
                   {contacts.map((contact) => (

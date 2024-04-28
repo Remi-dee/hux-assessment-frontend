@@ -59,20 +59,61 @@ async function getcontacts(token) {
     },
   };
 
-  const data = await axios.get(`${API_URL}`, config);
+  const response = await axios.get(`${API_URL}`, config);
   // alert("Users successfully retrieved");
-  const contactsFromDb = data.data;
+  const contactsFromDb = response.data;
 
   return contactsFromDb;
 }
 
-// Logout user
-const logout = () => {
-  if (typeof window !== "undefined" && response.data) {
-    localStorage.removeItem("user");
-  } else {
-    false;
+// Delete Contact
+const deleteContact = async (user, contactId) => {
+  console.log(user, contactId);
+  const config = {
+    headers: {
+      Authorization: `Bearer ${user.token}`,
+    },
+  };
+  try {
+    const response = await axios.delete(
+      `${API_URL}/${contactId}`,
+
+      config
+    );
+
+    if (response.data) {
+      alert("Contact successfully deleted");
+    } else {
+      false;
+    }
+  } catch (e) {
+    alert("unable to delete account :", e);
   }
 };
 
-export { createContact, updateContact, getcontacts };
+const getContactById = async (user, contactId) => {
+  console.log(user, contactId);
+  const config = {
+    headers: {
+      Authorization: `Bearer ${user.token}`,
+    },
+  };
+  try {
+    const response = await axios.get(
+      `${API_URL}/${contactId}`,
+
+      config
+    );
+    const contact = response.data;
+    return contact;
+  } catch (e) {
+    alert("unable to fetch contact :", e);
+  }
+};
+export {
+  createContact,
+  updateContact,
+  getcontacts,
+  deleteContact,
+  getContactById,
+};

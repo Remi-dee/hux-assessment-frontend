@@ -25,7 +25,6 @@ const createUser = async (userData) => {
 
 // Login user
 const loginUser = async (userData) => {
-  
   const response = await axios.post(API_URL + "/login", userData);
   try {
     if (typeof window !== "undefined" && response.data) {
@@ -58,11 +57,7 @@ async function getUsers(token) {
 
 // Logout user
 const logout = () => {
-  if (typeof window !== "undefined" && response.data) {
-    localStorage.removeItem("user");
-  } else {
-    false;
-  }
+  localStorage.removeItem("user");
 };
 
 export { createUser, logout, loginUser, getUsers };

@@ -3,7 +3,10 @@ import { useRouter, useSearchParams } from "next/navigation";
 
 import { useState, useEffect } from "react";
 import { Modal } from "../../composables/modal/modal";
-import { getcontacts } from "../../composables/services/contactServices";
+import {
+  deleteContact,
+  getcontacts,
+} from "../../composables/services/contactServices";
 import Spinner from "../../composables/spinner/spinner";
 
 export default function Contacts({ setContactId, user }) {
@@ -14,7 +17,6 @@ export default function Contacts({ setContactId, user }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    console.log("user token is", user.token);
     const fetchContacts = async () => {
       if (user && user.token) {
         try {
@@ -30,6 +32,10 @@ export default function Contacts({ setContactId, user }) {
     };
 
     fetchContacts();
+
+    const intervalId = setInterval(fetchContacts, 5000); // Fetch contacts every 5 seconds
+
+    return () => clearInterval(intervalId);
   }, [user.token]);
 
   const handleCreateContact = (e) => {
@@ -37,9 +43,9 @@ export default function Contacts({ setContactId, user }) {
     router.push("/contact/?view=createcontact");
   };
 
-  const handleDelete = (id) => {
-    // Handle delete logic here
-    console.log(`Deleting contact with ID: ${id}`);
+  const handleDelete = (e, id) => {
+    e.preventDefault();
+    deleteContact(user, id);
   };
 
   const handleUpdate = (e, id) => {
@@ -54,7 +60,7 @@ export default function Contacts({ setContactId, user }) {
       <div className="flex flex-col items-center justify-center min-h-screen py-6 bg-gray-100">
         <>
           <div className="max-w-4xl w-full px-4">
-            <div className="text-center md:text-left md:flex justify-between">
+            <div className="text-center mt-5 md:text-left md:flex justify-between">
               <h2 className="text-3xl font-bold text-gray-800 mb-4">
                 Contacts List
               </h2>
@@ -110,9 +116,18 @@ export default function Contacts({ setContactId, user }) {
                           </p>
                         </div>
                       </div>
+
                       <div className="flex space-x-2">
+                        <div className="flex space-x-2">
+                          <a
+                            href={`/contact/${contact._id}`}
+                            className="text-blue-600"
+                          >
+                            Details
+                          </a>
+                        </div>
                         <svg
-                          onClick={() => handleDelete(contact.id)}
+                          onClick={(e) => handleDelete(e, contact._id)}
                           className="h-6 w-6 text-red-600 cursor-pointer"
                           fill="none"
                           viewBox="0 0 24 24"
@@ -127,7 +142,6 @@ export default function Contacts({ setContactId, user }) {
                         </svg>
                         <svg
                           onClick={(e) => {
-                            console.log("here is our", contact._id);
                             handleUpdate(e, contact._id);
                           }}
                           className="h-6 w-6 text-blue-600 cursor-pointer group-hover:hidden"

@@ -15,7 +15,7 @@ export function Modal({ onClose = () => {}, children }) {
         ref={overlayRef}
         className="fixed inset-0 bg-gray-800/60"
       />
-      <div className="relative flex items-center justify-center w-1/2">
+      <div className="relative flex items-center justify-center lg:w-1/2 ">
         <div className="max-h-screen overflow-y-auto scrollbar-hidden">
           {children}
         </div>

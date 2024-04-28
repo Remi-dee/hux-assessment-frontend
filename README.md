@@ -15,7 +15,7 @@ This is a simple contact management application built with Next.js, Express.js, 
 - **Frontend**: Next.js, React, Tailwind CSS
 - **Backend**: Express.js, MongoDB
 - **Authentication**: JWT (JSON Web Tokens)
-- **Deployment**: Heroku (Backend), Vercel (Frontend)
+- **Deployment**: Onrender (Backend), Vercel (Frontend)
 - **Other Tools**: Axios (HTTP client), bcrypt (password hashing)
 
 ## Getting Started
@@ -24,3 +24,35 @@ This is a simple contact management application built with Next.js, Express.js, 
 
 ```bash
 git clone https://github.com/yourusername/contact-management-app.git
+```
+
+
+
+2. Navigate to the project directory:
+
+```bash
+git clone https://github.com/yourusername/contact-management-app.git
+```
+3. Install dependencies:
+
+```bash
+npm install
+```
+
+4. Install dependencies:
+
+```bash
+npm install
+```
+
+5. Start the development server:
+
+```bash
+npm run dev
+
+
+```
+
+6. Open your browser and navigate to http://localhost:3000 to view the application.
+
+

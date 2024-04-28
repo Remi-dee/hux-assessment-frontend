@@ -1,9 +1,9 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { validateContactForm } from "../../composables/validation";
-import { createUser } from "../../composables/services/contactServices";
+import { createContact } from "../../composables/services/contactServices";
 
-export default function CreateContact( user ) {
+export default function CreateContact({ onClose, user }) {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   // State for form fields
@@ -24,10 +24,11 @@ export default function CreateContact( user ) {
     // Perform form validation before submitting
     if (validateContactForm(formData)) {
       setIsLoading(true);
-      const userCreated = await createUser(formData, user.token);
-      if (userCreated) setIsLoading(false);
+      const contactCreated = await createContact(formData, user.token);
+      if (contactCreated) setIsLoading(false);
       router.push("/contact");
       setIsLoading(false);
+     
     }
   };
 
@@ -98,7 +99,7 @@ export default function CreateContact( user ) {
               type="submit"
               className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
-              Add Contact
+              {isLoading ? "Loading..." : "Add Contact"}
             </button>
           </div>
         </form>

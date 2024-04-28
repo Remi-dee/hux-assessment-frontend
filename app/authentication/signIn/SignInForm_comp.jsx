@@ -20,7 +20,7 @@ export default function SignIn() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // Perform form validation before submitting
-    setIsLoading(false);
+    
     setIsLoading(true);
     const userLoggedIn = await loginUser(formData);
     if (userLoggedIn) {

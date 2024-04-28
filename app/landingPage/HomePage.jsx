@@ -8,7 +8,7 @@ function HomePage() {
     <>
       <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center mb-5">
         <h1 className="mt-[40px] lg:mt-0 lg:w-full w-[410px] text-5xl font-bold">
-          Welcome to Contact Manager
+          Welcome to Hux Contact Manager
         </h1>
 
         <p className="mt-6 lg:mt-3 text-xl">

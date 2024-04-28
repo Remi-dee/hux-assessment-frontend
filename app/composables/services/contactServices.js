@@ -3,8 +3,7 @@ import axios from "axios";
 const API_URL = "https://hux-contact-management.onrender.com/contacts";
 
 // Create contact
-const createUser = async (userData, token) => {
-  
+const createContact = async (userData, token) => {
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -25,36 +24,46 @@ const createUser = async (userData, token) => {
   }
 };
 
-// Login user
-const loginUser = async (userData) => {
-  const response = await axios.post(API_URL + "/login", userData);
+// Update Contact
+const updateContact = async (userData, user, contactId) => {
+  console.log(user, contactId);
+  const config = {
+    headers: {
+      Authorization: `Bearer ${user.token}`,
+    },
+  };
   try {
-    if (typeof window !== "undefined" && response.data) {
-      localStorage.setItem("user", JSON.stringify(response.data));
-      return true;
+    const response = await axios.put(
+      `${API_URL}/${contactId}`,
+      userData,
+      config
+    );
+
+    if (response.data) {
+      console.log(response.data);
+      alert("Contact successfully updated");
+    } else {
+      false;
     }
   } catch (e) {
-    alert("unable to login :", e.message);
-    return {
-      message: `unable to login : ${e.response.message}`,
-      loading: false,
-    };
+    alert("unable to update account :", e);
   }
 };
 
 // Get Users
-async function getUsers(token) {
+async function getcontacts(token) {
+  console.log("our token is", token);
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   };
 
-  const { data } = await axios.get(`${API_URL}/allUsers`, config);
+  const data = await axios.get(`${API_URL}`, config);
   // alert("Users successfully retrieved");
-  const usersFromDb = data;
+  const contactsFromDb = data.data;
 
-  return usersFromDb;
+  return contactsFromDb;
 }
 
 // Logout user
@@ -66,4 +75,4 @@ const logout = () => {
   }
 };
 
-export { createUser, logout, loginUser, getUsers };
+export { createContact, updateContact, getcontacts };

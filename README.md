@@ -5,6 +5,8 @@ This is a simple contact management application built with Next.js, Express.js, 
 ## Demo
 
 ### Register User
+![Remi](https://github.com/Remi-dee/hux-assessment-frontend/assets/96704300/df70bd35-6a2f-49c3-b025-8f9302d0cc0c)
+
 
 ### Login User
 ![Remi](https://github.com/Remi-dee/hux-assessment-frontend/assets/96704300/ac40b2c9-5442-4c49-a8a5-3b22090daef6)

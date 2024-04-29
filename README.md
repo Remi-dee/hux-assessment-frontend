@@ -56,7 +56,7 @@ git clone https://github.com/yourusername/contact-management-app.git
 cd contact-management-backend
 
 ```
-3. Install dependencies:
+3. Install all dependencies:
 
 ```bash
 npm install

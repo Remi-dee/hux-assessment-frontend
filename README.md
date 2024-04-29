@@ -2,6 +2,21 @@
 
 This is a simple contact management application built with Next.js, Express.js, and MongoDB.
 
+## Demo
+
+### Register User
+
+### Login User
+![Remi](https://github.com/Remi-dee/hux-assessment-frontend/assets/96704300/ac40b2c9-5442-4c49-a8a5-3b22090daef6)
+
+## Delete and Create a contact
+![Remi](https://github.com/Remi-dee/hux-assessment-frontend/assets/96704300/d9a82621-d0f5-4787-b5d4-a3acef7dfd94)
+
+## Update a contact and logout
+![Remi](https://github.com/Remi-dee/hux-assessment-frontend/assets/96704300/e0bb9d48-24e7-4e79-82bf-f9c6bd013850)
+
+
+
 ## Features
 
 - **Authentication**: Users can sign up, sign in, and sign out securely.
@@ -31,7 +46,8 @@ git clone https://github.com/yourusername/contact-management-app.git
 2. Navigate to the project directory:
 
 ```bash
-git clone https://github.com/yourusername/contact-management-app.git
+cd contact-management-backend
+
 ```
 3. Install dependencies:
 
@@ -39,13 +55,7 @@ git clone https://github.com/yourusername/contact-management-app.git
 npm install
 ```
 
-4. Install dependencies:
-
-```bash
-npm install
-```
-
-5. Start the development server:
+4. Start the development server:
 
 ```bash
 npm run dev
@@ -53,6 +63,6 @@ npm run dev
 
 ```
 
-6. Open your browser and navigate to http://localhost:3000 to view the application.
+5. Open your browser and navigate to http://localhost:3000 to view the application.
 
 

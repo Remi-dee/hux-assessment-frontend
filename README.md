@@ -72,4 +72,10 @@ npm run dev
 
 5. Open your browser and navigate to http://localhost:3000 to view the application.
 
+## Kindly note that the app is currently connected to the deployed server url "https://hux-contact-management.onrender.com" but if there is need to test with the local server;
+Please 
+
+1. Redirect to https://github.com/Remi-dee/hux-assessment-backend for guide to run the server locally
+2. From the frontend app base directory, navigate to app\composables\services\authServices.js and app\composables\services\authServices.js respectively and change the base url from "https://hux-contact-management.onrender.com" to "your-running-server-localhost-url"
+
 

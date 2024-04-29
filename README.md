@@ -45,7 +45,7 @@ This is a simple contact management application built with Next.js, Express.js, 
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/contact-management-app.git
+https://github.com/Remi-dee/hux-assessment-frontend.git
 ```
 
 
@@ -53,7 +53,7 @@ git clone https://github.com/yourusername/contact-management-app.git
 2. Navigate to the project directory:
 
 ```bash
-cd contact-management-backend
+cd contact-frontend-backend
 
 ```
 3. Install all dependencies:

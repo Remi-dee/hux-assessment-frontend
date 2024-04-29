@@ -17,6 +17,11 @@ This is a simple contact management application built with Next.js, Express.js, 
 
 
 
+A single contact page
+![Remi](https://github.com/Remi-dee/hux-assessment-frontend/assets/96704300/b6f8cf4d-8cee-4a24-bb99-4bbdbe402f5b)
+
+
+
 ## Features
 
 - **Authentication**: Users can sign up, sign in, and sign out securely.

@@ -52,7 +52,6 @@ const updateContact = async (userData, user, contactId) => {
 
 // Get Users
 async function getcontacts(token) {
-  console.log("our token is", token);
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -68,7 +67,6 @@ async function getcontacts(token) {
 
 // Delete Contact
 const deleteContact = async (user, contactId) => {
-  console.log(user, contactId);
   const config = {
     headers: {
       Authorization: `Bearer ${user.token}`,

@@ -1,5 +1,3 @@
-// pages/update-contact.js
-
 import { useRouter } from "next/navigation";
 import { updateContact } from "../../composables/services/contactServices";
 import { useState } from "react";
@@ -14,7 +12,7 @@ export default function UpdateContact({ contactId, user }) {
     lastName: "",
     phoneNumber: "",
   });
-  console.log("here is 2", user);
+  
   // Form change handler
   const handleChange = (e) => {
     const { id, value } = e.target;

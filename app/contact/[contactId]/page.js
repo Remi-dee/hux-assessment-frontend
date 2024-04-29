@@ -13,8 +13,7 @@ export default function ContactDetails({ params }) {
   const [user, setUser] = useState({});
   useEffect(() => {
     const userSession = JSON.parse(localStorage.getItem("user"));
-    console.log("here is", userSession);
-    console.log("here is", user);
+   
     if (user) setUser(userSession);
     const fetchContact = async () => {
       if (contactId && user.token) {
@@ -30,7 +29,7 @@ export default function ContactDetails({ params }) {
     };
 
     fetchContact();
-    console.log(contact);
+   
   }, [contactId, user.token]);
 
   if (loading) {
